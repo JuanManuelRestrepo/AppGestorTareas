@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(120deg, #2a5e79, #000000);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Espacio adicional para móviles */
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-container {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2980b9;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #8e44ad;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 20px; /* Reducir padding en pantallas más pequeñas */
+    }
+
+    h2 {
+        font-size: 20px; /* Ajustar el tamaño del título */
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        font-size: 14px; /* Ajustar el tamaño de fuente de los inputs */
+        padding: 8px; /* Reducir el padding de los inputs */
+    }
+
+    button {
+        padding: 8px; /* Reducir el padding del botón */
+        font-size: 14px; /* Ajustar el tamaño de la fuente del botón */
+    }
+}
