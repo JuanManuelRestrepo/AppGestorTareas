@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #3a3838, #141616); /* Degradado de izquierda a derecha */
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.Form-create-users{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px; /* Ancho de la ventana emergente */
+    margin: 50px auto; /* Centrado vertical y horizontal */
+    background: linear-gradient(to right, #3a3838, #141616); /* Degradado de izquierda a derecha */
+}
+
+
+
+.Form-create-users p{
+    height: 25px;
+    text-align: center;
+    margin-top: 10px; /* Espacio superior para separar del formulario */
+    font-size: 14px; /* Tamaño de fuente del mensaje */
+    color: #ffffff;
+    font-size: 17px;
+}
+#Create-user {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px; /* Ancho de la ventana emergente */
+   
+}
+
+label {
+    margin-bottom: 5px;
+    width: 80%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #1b1919; /* Color del borde al enfocar */
+}
+
+button {
+    padding: 10px;
+    background-color: #000000; /* Color de fondo del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffffff; /* Color al pasar el mouse */
+    color: #000000;
+}
