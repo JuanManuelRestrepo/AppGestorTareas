@@ -8,7 +8,7 @@ h1 {
     color: #ffffff;
 }
 
-.Form-create-users{
+.Form-create-users {
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -20,9 +20,38 @@ h1 {
     background: linear-gradient(to right, #3a3838, #141616); /* Degradado de izquierda a derecha */
 }
 
+select {
+    padding: 8px; /* Disminuir el padding para reducir el tamaño interno */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    margin: 7px 0 15px 0; /* Espaciado entre campos */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Color del texto */
+    font-size: 14px; /* Disminuir el tamaño de fuente para que sea más pequeño */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el select */
+    height: auto; /* Ajustar la altura automáticamente */
+}
 
+/* Estilo para cuando el select está enfocado */
+select:focus {
+    border-color: #1b1919; /* Color del borde al enfocar */
+    outline: none; /* Eliminar el contorno por defecto */
+    box-shadow: 0 0 5px rgba(27, 25, 25, 0.5); /* Sombra sutil al enfocar */
+}
 
-.Form-create-users p{
+/* Opcional: Estilo para las opciones dentro del select */
+option {
+    padding: 5px; /* Espaciado interno para opciones */
+    background-color: #ffffff; /* Fondo blanco */
+    color: #333; /* Color del texto */
+}
+
+/* Cambiar el fondo de las opciones al pasar el mouse */
+option:hover {
+    background-color: #f0f0f0; /* Fondo gris claro */
+}
+
+.Form-create-users p {
     height: 25px;
     text-align: center;
     margin-top: 10px; /* Espacio superior para separar del formulario */
@@ -30,6 +59,7 @@ h1 {
     color: #ffffff;
     font-size: 17px;
 }
+
 #Create-user {
     display: flex;
     flex-direction: column;
@@ -38,7 +68,6 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px; /* Ancho de la ventana emergente */
-   
 }
 
 label {
@@ -48,11 +77,13 @@ label {
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"] { /* Asegúrate de que el selector sea correcto aquí */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 15px; /* Espaciado entre campos */
+    font-size: 16px; /* Tamaño de fuente mayor para mejor legibilidad */
+    height: auto; /* Ajustar la altura automáticamente */
 }
 
 input[type="text"]:focus,

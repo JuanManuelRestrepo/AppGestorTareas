@@ -1,26 +1,18 @@
-
-//URL api
-const UrlApi = "https://localhost:7037/api/Users/users";
+const UrlApi = "https://localhost:57199/api/Usuarios/GetAllUsuarios`";
 
 async function GetUsers() {
     try {
-        //alamecnamos solicitud de la api en una variable
         const response = await fetch(UrlApi);
-        //convertimos en JSON
         const Users = await response.json();
 
-        const usersTableBody = document.getElementById("users-table-body");
-        usersTableBody.innerHTML = ""; // Limpiamos el contenedor
+        const usersTableBody = document.getElementById("users-table-body"); // Asegúrate de que esto sea correcto
 
-        // iterams por cada elemento del JSON
         Users.forEach(user => {
-
-            //por cada usuario creamos una fila
             const row = document.createElement('tr');
 
             const userIdCell = document.createElement('td');
             userIdCell.textContent = user.id;
-            row.appendChild(userIdCell); // agregamos el id al contenedor
+            row.appendChild(userIdCell);
 
             const userNameCell = document.createElement('td');
             userNameCell.textContent = user.name;
@@ -33,18 +25,17 @@ async function GetUsers() {
             const editCell = document.createElement('td');
             const editButton = document.createElement('button');
             editButton.textContent = 'Modificar';
-            editButton.onclick = () => modificarUsuario(user.id); // Redirige a la página de edición
+            editButton.onclick = () => modificarUsuario(user.id);
             editCell.appendChild(editButton);
             row.appendChild(editCell);
 
             const deleteCell = document.createElement('td');
             const deleteButton = document.createElement('button');
             deleteButton.textContent = 'Eliminar';
-            deleteButton.onclick = () => confirmarEliminarUsuario(user); // Función de confirmación
+            deleteButton.onclick = () => confirmarEliminarUsuario(user);
             deleteCell.appendChild(deleteButton);
             row.appendChild(deleteCell);
 
-            // una vez acabada la fila o los datos del usuario agregamos fila a la tabla
             usersTableBody.appendChild(row);
         });
     } catch (error) {
@@ -52,39 +43,51 @@ async function GetUsers() {
     }
 }
 
-function crearUsuario(){
-    window. location.href ="Createuser/createUser.html"   
+function crearUsuario() {
+    window.location.href = "Createuser/createUser.html";   
 }
 
-// Función para modificar usuario
 function modificarUsuario(id) {
-    // Redirigir a la página de edición, pasando el ID
-    window.location.href = `editar.html?id=${id}`;
+    window.location.href = `editar.html?id=${id}`; // Usa comillas invertidas aquí
 }
 
-// Función para confirmar la eliminación del usuario
 function confirmarEliminarUsuario(user) {
-    const confirmation = confirm(`¿Desea eliminar al usuario: ${user.name}?`);
+    const confirmation = confirm(`¿Desea eliminar al usuario: ${user.email}?`); // Usa comillas invertidas aquí
     if (confirmation) {
-        eliminarUsuario(user.id); // Llamar a la función de eliminación
+        eliminarUsuario(user.email);
     }
 }
 
-// Función para eliminar usuario
-function eliminarUsuario(id) {
-    // Aquí podrías hacer una llamada a la API para eliminar el usuario
-    console.log(`Eliminar usuario con ID: ${id}`);
-    // Ejemplo de llamada a la API (requiere implementar la lógica de eliminación en tu backend)
-    // fetch(`${UrlApi}/${id}`, { method: 'DELETE' })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             alert('Usuario eliminado exitosamente');
-    //             GetUsers(); // Volver a cargar la lista de usuarios
-    //         } else {
-    //             alert('Error al eliminar el usuario');
-    //         }
-    //     });
+
+
+async function eliminarUsuario(id) {
+
+    try {
+        const data= {
+            id: id
+        }
+        
+        console.log(id)
+        const response = await fetch(`https://localhost:57199/api/Proyecto/Actualizar/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            alert('Usuario eliminado exitosamente');
+            GetUsers(); // Recargar la lista de usuarios
+        } else {
+            const errorData = await response.json();
+            alert(`Error al eliminar el usuario: ${errorData.message || "Error desconocido"}`);
+        }
+    } catch (error) {
+        console.error('Error al realizar la eliminación:', error);
+        alert('Ocurrió un error al intentar eliminar el usuario.');
+    }
 }
 
-// Llama a la función para cargar los usuarios cuando la página se carga
-window.onload = GetUsers;
+window.onload = GetUsers; // Asegúrate de que esto esté al final del script
+

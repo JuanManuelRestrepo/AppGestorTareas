@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Listado de Proyectos</title>
+  <link rel="stylesheet" href="Proyectos.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Listado de Proyectos</h1>
+
+    <!-- Botón para crear un nuevo proyecto -->
+    <button id="crearProyectoBtn" class="crear-proyecto-btn">+ Crear Proyecto</button>
+
+    <!-- Formulario para crear un proyecto (inicialmente oculto) -->
+    <div id="formularioCrearProyecto" class="formulario" style="display: none;">
+      <h3>Crear Proyecto</h3>
+      <form id="formProyecto">
+        <label for="nombre">Nombre del Proyecto:</label>
+        <input type="text" id="nombre" required>
+        <label for="Usuarios">Usuarios del Proyecto:</label>
+        <select id="Usuarios" multiple >
+          <!-- Las opciones de usuarios se cargarán aquí dinámicamente -->
+        </select>
+        <!-- Botones para crear y cancelar -->
+        <div class="form-buttons">
+          <button type="submit">Crear</button>
+          <button type="button" id="cancelarCrearProyecto">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Formulario para actualizar un proyecto (inicialmente oculto) -->
+    <div id="formularioActualizarProyecto" class="formulario" style="display: none;">
+      <h3>Actualizar Proyecto</h3>
+      <form id="formActualizarProyecto">
+        <input type="hidden" id="idProyecto">
+      
+        <label for="nombreActualizar">Nombre del Proyecto:</label>
+        <input type="text" id="nombreActualizar" required>
+      
+        <!-- Campo para seleccionar usuarios -->
+        <label for="usuariosActualizar">Usuarios del Proyecto:</label>
+        <select id="usuariosActualizar" multiple >
+          <!-- Las opciones de usuarios se cargarán aquí dinámicamente -->
+        </select>
+      
+        <!-- Botones para actualizar y cancelar -->
+        <div class="form-buttons">
+          <button type="submit">Actualizar</button>
+          <button type="button" id="cancelarActualizarProyecto">Cancelar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Lista de proyectos -->
+    <div id="proyectosList" class="proyectos-list">
+      <!-- Los proyectos se cargarán aquí dinámicamente -->
+    </div>
+
+  </div>
+
+  <script src="Proyectos.js"></script>
+</body>
+
+</html>

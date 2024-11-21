@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
   
         // Enviar los datos usando Fetch API
-        fetch("https://localhost:7037/api/Login/Login", {
+        fetch("https://localhost:57199/api/Usuario/Login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

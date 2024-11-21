@@ -9,13 +9,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const Name = document.getElementById("Name").value;
             const Email = document.getElementById("Email").value;
             const Password = document.getElementById("Password").value;
-        
+            const Rol = document.getElementById("opciones").value;
+
+
             console.log("Datos a enviar:", { Name, Email, Password });
 
             const DataUser = {
                 Name: Name,
                 Email: Email,
-                Contraseña: Password
+                Contraseña: Password,
+                Rol : Rol
             };
 
             fetch(UrlApi, {
@@ -25,25 +28,32 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 body: JSON.stringify(DataUser)
             })
+            
+            
             .then(response => {
+                // Verificamos si la respuesta es exitosa
                 if (!response.ok) {
-                    console.error('Error en la respuesta:', response);
-                    throw new Error('Error en la red');
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Error en la red');
+                    });
                 }
                 return response.json();
             })
+
+
+
             .then(data => {
                 console.log('Éxito:', data);
-                const form  = document.getElementById("Create-user");
-                form.reset();
-                document.getElementById("response").innerText = "¡Registro exitoso!"; // Opcional
-              
-
-                
+                form.reset(); // Resetea el formulario
+                document.getElementById("response").innerText = "¡Registro exitoso!"; // Mostrar mensaje de éxito
             })
-            .catch((error) => {
-                console.error("Error:", error);
-                document.getElementById("response").innerText = "¡Correo Existente!";
+
+
+
+            .catch(error => {
+                console.error("Error:", error.message);
+                // Aquí manejamos los mensajes de error desde el servidor
+                document.getElementById("response").innerText = error.message; // Mostrar mensaje de error
             });
         });
     } else {
