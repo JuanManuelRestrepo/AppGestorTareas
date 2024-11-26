@@ -20,11 +20,16 @@ document.addEventListener("DOMContentLoaded", function() {
             },
             body: JSON.stringify(data),
         })
-        .then((response) => response.json())
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Error en la respuesta del servidor');
+            }
+            return response.json(); // Ahora esperamos una respuesta JSON
+        })
         .then((data) => {
-            // Aquí manejas la respuesta del servidor
+            // Maneja la respuesta del servidor
             if (data.success) {
-                document.getElementById("response").innerText = "¡Inicio de sesión exitoso!";
+                document.getElementById("response").innerText = data.message; // Mostramos el mensaje de éxito
                 // Redirige al usuario a home.html dentro de la carpeta 'pages'
                 window.location.href = "../Home/Home.html"; // Asegúrate de que 'pages/home.html' es la ruta correcta
             } else {
@@ -33,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch((error) => {
             console.error("Error:", error);
-            document.getElementById("response").innerText = "Error en la solicitud. Verifica la consola para más detalles."
-            console.log("Eror al enviar la solicitud")
+            document.getElementById("response").innerText = "Email o Contraseña Incorrecta";
         });
     });
-  });
-  
+});

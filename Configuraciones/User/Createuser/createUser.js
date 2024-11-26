@@ -5,20 +5,17 @@ document.addEventListener("DOMContentLoaded", function() {
         form.addEventListener("submit", function(event) {
             event.preventDefault();
 
-            const UrlApi = "https://localhost:7037/api/Users/CreateUser";
+            const UrlApi = "https://localhost:57199/api/Usuario/crear";
             const Name = document.getElementById("Name").value;
             const Email = document.getElementById("Email").value;
             const Password = document.getElementById("Password").value;
-            const Rol = document.getElementById("opciones").value;
-
 
             console.log("Datos a enviar:", { Name, Email, Password });
 
             const DataUser = {
                 Name: Name,
                 Email: Email,
-                Contraseña: Password,
-                Rol : Rol
+                Contraseña: Password
             };
 
             fetch(UrlApi, {
@@ -28,8 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 },
                 body: JSON.stringify(DataUser)
             })
-            
-            
             .then(response => {
                 // Verificamos si la respuesta es exitosa
                 if (!response.ok) {
@@ -39,20 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
                 return response.json();
             })
-
-
-
             .then(data => {
                 console.log('Éxito:', data);
                 form.reset(); // Resetea el formulario
                 document.getElementById("response").innerText = "¡Registro exitoso!"; // Mostrar mensaje de éxito
             })
-
-
-
             .catch(error => {
                 console.error("Error:", error.message);
-                // Aquí manejamos los mensajes de error desde el servidor
                 document.getElementById("response").innerText = error.message; // Mostrar mensaje de error
             });
         });

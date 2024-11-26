@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proyecto</title>
+    <link rel="stylesheet" href="Tareas.css">
+</head>
+<body>
+    <div class="container">
+        <h1><span id="nombreProyecto"></span></h1>
+
+        <!-- Lista de Usuarios -->
+        <section>
+            <h2>Usuarios del Proyecto</h2>
+            <ul id="usuariosList"></ul>
+        </section>
+
+        <!-- Botón para mostrar el formulario de tarea -->
+        <button id="mostrarFormularioBtn">Crear Tarea</button>
+
+        <!-- Formulario para Crear Tarea (oculto por defecto) -->
+        <div id="formularioTarea" style="display:none;">
+            <h2>Crear Nueva Tarea</h2>
+            <form id="crearTareaForm">
+                <label for="nombreTarea">Nombre:</label>
+                <input type="text" id="nombreTarea" name="nombreTarea" required><br>
+
+                <label for="descripcionTarea">Descripción:</label>
+                <input type="text" id="descripcionTarea" name="descripcionTarea" required><br>
+
+                <label for="fechaInicio">Fecha Inicio:</label>
+                <input type="date" id="fechaInicio" name="fechaInicio" required><br>
+
+                <label for="fechaFin">Fecha Fin:</label>
+                <input type="date" id="fechaFin" name="fechaFin" required><br>
+
+                <button type="submit">Crear Tarea</button>
+                <button type="button" id="cancelarCrearTarea">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Formulario para Actualizar Tarea (oculto por defecto) -->
+        <div id="formularioActualizarTarea" style="display:none;">
+            <h2>Actualizar Tarea</h2>
+            <form id="actualizarTareaForm">
+                <input type="hidden" id="tareaId" name="tareaId">
+                
+                <label for="nombreTareaActualizar">Nombre:</label>
+                <input type="text" id="nombreTareaActualizar" name="nombreTarea" required><br>
+        
+                <label for="descripcionTareaActualizar">Descripción:</label>
+                <input type="text" id="descripcionTareaActualizar" name="descripcionTarea" required><br>
+        
+                <label for="fechaInicioActualizar">Fecha Inicio:</label>
+                <input type="date" id="fechaInicioActualizar" name="fechaInicio" required><br>
+        
+                <label for="fechaFinActualizar">Fecha Fin:</label>
+                <input type="date" id="fechaFinActualizar" name="fechaFin" required><br>
+        
+                <label for="responsablesActualizar">Responsables:</label>
+                <select id="responsablesActualizar" name="responsables" multiple></select>
+        
+                <label for="estadoActualizar">Estado:</label>
+                <select id="estadoActualizar" required>
+                    <option value="abierta">Abierta</option>
+                    <option value="cerrada">Cerrada</option>
+                    <option value="pendiente">Pendiente</option>
+                </select>
+        
+                <button type="submit">Actualizar Tarea</button>
+                <button type="button" id="cancelarActualizarTarea">Cancelar</button>
+            </form>
+        </div>
+
+        <!-- Lista de Tareas -->
+        <section>
+            <h2>Tareas del Proyecto</h2>
+            <ul id="tareasList"></ul>
+        </section>
+    </div>
+
+    <script src="Tareas.js"></script>
+</body>
+</html>

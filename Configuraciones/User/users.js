@@ -1,18 +1,17 @@
-const UrlApi = "https://localhost:57199/api/Usuarios/GetAllUsuarios`";
+const UrlApi = "https://localhost:57199/api/Usuario/GetAllUsuarios"; // URL correcta
 
 async function GetUsers() {
     try {
         const response = await fetch(UrlApi);
         const Users = await response.json();
 
-        const usersTableBody = document.getElementById("users-table-body"); // Asegúrate de que esto sea correcto
+        const usersTableBody = document.getElementById("users-table-body");
+
+        // Limpia la tabla antes de agregar nuevos usuarios
+        usersTableBody.innerHTML = "";
 
         Users.forEach(user => {
             const row = document.createElement('tr');
-
-            const userIdCell = document.createElement('td');
-            userIdCell.textContent = user.id;
-            row.appendChild(userIdCell);
 
             const userNameCell = document.createElement('td');
             userNameCell.textContent = user.name;
@@ -48,34 +47,33 @@ function crearUsuario() {
 }
 
 function modificarUsuario(id) {
-    window.location.href = `editar.html?id=${id}`; // Usa comillas invertidas aquí
+    // Asegúrate de que el id se pase correctamente en la URL
+    window.location.href = `editar/editar.html?id=${id}`; 
 }
 
+
 function confirmarEliminarUsuario(user) {
-    const confirmation = confirm(`¿Desea eliminar al usuario: ${user.email}?`); // Usa comillas invertidas aquí
+    const confirmation = confirm(`¿Desea eliminar al usuario: ${user.email}?`);
     if (confirmation) {
-        eliminarUsuario(user.email);
+        eliminarUsuario(user.id); // Ahora usamos el ID
     }
 }
 
-
-
 async function eliminarUsuario(id) {
+    // Verificar si el id es válido
+    if (!id) {
+        alert("ID no válido");
+        return;
+    }
+    console.log(id)
 
     try {
-        const data= {
-            id: id
-        }
-        
-        console.log(id)
-        const response = await fetch(`https://localhost:57199/api/Proyecto/Actualizar/${id}`, {
+        const response = await fetch(`https://localhost:57199/api/Usuario/Delete/${id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
-        });
-
+        });   
         if (response.ok) {
             alert('Usuario eliminado exitosamente');
             GetUsers(); // Recargar la lista de usuarios
@@ -90,4 +88,3 @@ async function eliminarUsuario(id) {
 }
 
 window.onload = GetUsers; // Asegúrate de que esto esté al final del script
-

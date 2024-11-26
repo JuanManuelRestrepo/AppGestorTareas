@@ -5,6 +5,17 @@ body {
   padding: 20px;
   margin: 0;
 }
+/* Estilo para los enlaces de proyectos */
+.proyecto-enlace {
+  color: #000000; /* Color original del enlace */
+  text-decoration: none; /* Quitar subrayado */
+}
+
+/* Estilo para los enlaces visitados */
+.proyecto-enlace:visited {
+  color: #000000; /* Mantener el mismo color (puedes cambiarlo si prefieres otro) */
+  text-decoration: none; /* Quitar la línea debajo */
+}
 
 .container {
   max-width: 1200px;

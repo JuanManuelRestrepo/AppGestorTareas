@@ -1,4 +1,4 @@
-// Mostrar y ocultar formularios
+// --- Mostrar y Ocultar Formularios ---
 const mostrarFormularioCrear = () => {
   document.getElementById('formularioCrearProyecto').style.display = 'block';
 };
@@ -10,6 +10,7 @@ const ocultarFormularioCrear = () => {
 const mostrarFormularioActualizar = (proyecto) => {
   document.getElementById('idProyecto').value = proyecto.id;
   document.getElementById('nombreActualizar').value = proyecto.nombre;
+  cargarUsuariosEnFormulario('usuariosActualizar', proyecto.usuarios); // Seleccionar usuarios del proyecto
   document.getElementById('formularioActualizarProyecto').style.display = 'block';
 };
 
@@ -17,209 +18,152 @@ const ocultarFormularioActualizar = () => {
   document.getElementById('formularioActualizarProyecto').style.display = 'none';
 };
 
-
-const cargarUsuariosCrear = async () => {
+// --- Cargar Usuarios Dinámicamente ---
+const cargarUsuariosEnFormulario = async (selectId, usuariosSeleccionados = []) => {
   try {
-    const response = await fetch('https://localhost:57199/api/Usuario/GetUsuariosProyectos'); // Suponiendo que tienes un endpoint para obtener usuarios
+    const response = await fetch('https://localhost:57199/api/Usuario/GetUsuariosProyectos');
     if (response.ok) {
       const usuarios = await response.json();
-      const selectUsuarios = document.getElementById('Usuarios');
-      console.log(usuarios)
-      
-      // Limpiar las opciones anteriores
-      selectUsuarios.innerHTML = '';
+      const selectElement = document.getElementById(selectId);
+      selectElement.innerHTML = ''; // Limpiar opciones previas
 
-      // Agregar las opciones de usuarios
       usuarios.forEach(usuario => {
         const option = document.createElement('option');
-        option.value = usuario.id; // Suponiendo que cada usuario tiene un id único
-        option.text = usuario.name; // Suponiendo que cada usuario tiene un nombre
-        selectUsuarios.appendChild(option);
+        option.value = usuario.id;
+        option.textContent = usuario.name;
+        if (usuariosSeleccionados.includes(usuario.id)) {
+          option.selected = true; // Marcar usuarios previamente seleccionados
+        }
+        selectElement.appendChild(option);
       });
     } else {
-      console.error('Error al obtener usuarios');
+      console.error('Error al cargar usuarios:', await response.text());
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error al cargar usuarios:', error);
   }
 };
 
-document.addEventListener('DOMContentLoaded', cargarUsuariosCrear);
-
+// --- Crear Proyecto ---
 const crearProyecto = async (event) => {
   event.preventDefault();
-
   const nombre = document.getElementById('nombre').value;
-  // Obtener los usuarios seleccionados como lista de GUIDs
-  const usuariosId = Array.from(document.getElementById('Usuarios').selectedOptions)
-                          .map(option => option.value); // Lista de GUIDs seleccionados
+  const usuariosId = Array.from(document.getElementById('usuariosCrear').selectedOptions)
+    .map(option => option.value);
 
-  // Construir el objeto JSON
-  const proyectoData = {
-    nombre: nombre,
-    usuariosId: usuariosId // Asegúrate de que coincida con el DTO en el backend
-  };
+  const proyectoData = { nombre, usuariosId };
 
   try {
-    // Verifica que el JSON está bien formado antes de enviarlo
-    console.log('Enviando JSON:', JSON.stringify(proyectoData)); 
-
     const response = await fetch('https://localhost:57199/api/Proyecto/CrearProyecto', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(proyectoData), // Convertir el objeto a JSON
+      body: JSON.stringify(proyectoData),
     });
 
     if (response.ok) {
       alert('Proyecto creado exitosamente');
-      obtenerProyectos(); // Actualiza la lista de proyectos
-      ocultarFormularioCrear(); // Oculta el formulario de creación
+      obtenerProyectos(); // Actualizar lista
+      ocultarFormularioCrear();
     } else {
       console.error('Error al crear proyecto:', await response.text());
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error al crear proyecto:', error);
   }
 };
 
-
-
-// Actualizar proyecto
+// --- Actualizar Proyecto ---
 const actualizarProyecto = async (event) => {
   event.preventDefault();
-
   const id = document.getElementById('idProyecto').value;
   const nombre = document.getElementById('nombreActualizar').value;
-
-  // Obtener los usuarios seleccionados como lista de GUIDs
   const usuariosId = Array.from(document.getElementById('usuariosActualizar').selectedOptions)
-                          .map(option => option.value); // Lista de GUIDs seleccionados
+    .map(option => option.value);
 
-  // Construir el objeto JSON
-  const proyectoData = {
-    nombre: nombre,
-    usuariosId: usuariosId // Asegúrate de que coincida con el DTO en el backend
-  };
+  const proyectoData = { nombre, usuariosId };
 
   try {
-    // Verifica que el JSON está bien formado antes de enviarlo
-    console.log('Enviando JSON:', JSON.stringify(proyectoData)); 
-
     const response = await fetch(`https://localhost:57199/api/Proyecto/ActualizarProyecto/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(proyectoData), // Convertir el objeto a JSON
+      body: JSON.stringify(proyectoData),
     });
 
     if (response.ok) {
       alert('Proyecto actualizado exitosamente');
-      obtenerProyectos(); // Actualiza la lista de proyectos
-      ocultarFormularioActualizar(); // Oculta el formulario de actualización
+      obtenerProyectos(); // Actualizar lista
+      ocultarFormularioActualizar();
     } else {
       console.error('Error al actualizar proyecto:', await response.text());
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error al actualizar proyecto:', error);
   }
 };
 
-
-// Obtener usuarios y llenar el campo de selección
-const cargarUsuariosActualizar = async () => {
-  try {
-    const response = await fetch('https://localhost:57199/api/Usuario/GetUsuariosProyectos'); // Suponiendo que tienes un endpoint para obtener usuarios
-    if (response.ok) {
-      const usuarios = await response.json();
-      const selectUsuarios = document.getElementById('usuariosActualizar');
-      
-      
-      // Limpiar las opciones anteriores
-      selectUsuarios.innerHTML = '';
-
-      // Agregar las opciones de usuarios
-      usuarios.forEach(usuario => {
-        const option = document.createElement('option');
-        option.value = usuario.id; // Suponiendo que cada usuario tiene un id único
-        option.text = usuario.name; // Suponiendo que cada usuario tiene un nombre
-        selectUsuarios.appendChild(option);
-      });
-    } else {
-      console.error('Error al obtener usuarios');
+// --- Eliminar Proyecto ---
+const eliminarProyecto = async (id) => {
+  if (confirm('¿Estás seguro de que deseas eliminar este proyecto?')) {
+    try {
+      const response = await fetch(`https://localhost:57199/api/Proyecto/Borrar/${id}`, { method: 'DELETE' });
+      if (response.ok) {
+        alert('Proyecto eliminado exitosamente');
+        obtenerProyectos(); // Actualizar lista
+      } else {
+        console.error('Error al eliminar proyecto:', await response.text());
+      }
+    } catch (error) {
+      console.error('Error al eliminar proyecto:', error);
     }
-  } catch (error) {
-    console.error('Error:', error);
   }
 };
 
-// Llamar a la función para cargar los usuarios cuando la página esté lista
-document.addEventListener('DOMContentLoaded', cargarUsuariosActualizar);
-
-
-
-
-
-
-
-
-
-
-
-// Obtener proyectos
+// --- Obtener y Mostrar Proyectos ---
 const obtenerProyectos = async () => {
   try {
     const response = await fetch('https://localhost:57199/api/Proyecto/GetAll');
     if (response.ok) {
       const proyectos = await response.json();
-      mostrarProyectos(proyectos); // Muestra los proyectos en la interfaz
+      mostrarProyectos(proyectos);
     } else {
-      console.error('Error al obtener proyectos');
+      console.error('Error al obtener proyectos:', await response.text());
     }
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Error al obtener proyectos:', error);
   }
 };
 
-// Mostrar proyectos
 const mostrarProyectos = (proyectos) => {
   const proyectosList = document.getElementById('proyectosList');
-  proyectosList.innerHTML = ''; // Limpia la lista de proyectos
+  proyectosList.innerHTML = ''; // Limpiar lista
 
   proyectos.forEach(proyecto => {
     const card = document.createElement('div');
     card.classList.add('proyecto-card');
     card.innerHTML = `
-      <div class="proyecto-name">${proyecto.nombre}</div>
-      <div class="proyecto-description">${proyecto.descripcion}</div>
+      <div class="proyecto-name">
+        <a href="/Proyectos/DetallesProyecto/Tareas.html?id=${proyecto.id}" class="proyecto-enlace">
+          ${proyecto.nombre}
+        </a>
+      </div>
       <div class="proyecto-buttons">
         <button onclick='mostrarFormularioActualizar(${JSON.stringify(proyecto)})'>Actualizar</button>
         <button class="eliminar" onclick='eliminarProyecto("${proyecto.id}")'>Eliminar</button>
       </div>
     `;
-    proyectosList.appendChild(card); // Añade la tarjeta de proyecto a la lista
+    proyectosList.appendChild(card);
   });
 };
 
-// Eliminar proyecto
-const eliminarProyecto = async (id) => {
-  try {
-    const response = await fetch(`https://localhost:57199/api/Proyecto/Borrar/${id}`, { method: 'DELETE' });
-    if (response.ok) {
-      alert('Proyecto eliminado');
-      obtenerProyectos(); // Actualiza la lista de proyectos
-    } else {
-      console.error('Error al eliminar proyecto');
-    }
-  } catch (error) {
-    console.error('Error:', error);
-  }
-};
+// --- Inicializar Eventos ---
+document.getElementById('crearProyectoBtn').addEventListener('click', mostrarFormularioCrear);
+document.getElementById('cancelarCrearProyecto').addEventListener('click', ocultarFormularioCrear);
+document.getElementById('formProyecto').addEventListener('submit', crearProyecto);
+document.getElementById('formActualizarProyecto').addEventListener('submit', actualizarProyecto);
+document.getElementById('cancelarActualizarProyecto').addEventListener('click', ocultarFormularioActualizar);
 
-// Eventos
-document.getElementById('crearProyectoBtn').addEventListener('click', mostrarFormularioCrear); // Muestra el formulario de creación
-document.getElementById('cancelarCrearProyecto').addEventListener('click', ocultarFormularioCrear); // Cancela la creación de proyecto
-document.getElementById('formProyecto').addEventListener('submit', crearProyecto); // Envía el formulario de creación
-document.getElementById('formActualizarProyecto').addEventListener('submit', actualizarProyecto); // Envía el formulario de actualización
-document.getElementById('cancelarActualizarProyecto').addEventListener('click', ocultarFormularioActualizar); // Cancela la actualización
-
-// Inicialización: obtiene la lista de proyectos cuando la página se carga
-document.addEventListener('DOMContentLoaded', obtenerProyectos);
+// --- Cargar Usuarios y Proyectos al Iniciar ---
+document.addEventListener('DOMContentLoaded', () => {
+  cargarUsuariosEnFormulario('usuariosCrear');
+  obtenerProyectos();
+});
