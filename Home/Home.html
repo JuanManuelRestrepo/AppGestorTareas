@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Tareas y Proyectos</title>
+    <link rel="stylesheet" href="Homecss.css">
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&#9776;</button>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href='../Proyectos/Proyectos.html'>Proyectos</a></li>
+                <li><a href="../Configuraciones/User/User.html">Usuarios</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <button class="open-btn" onclick="toggleSidebar()">&#9776;</button>
+            <h1>Proyectpro Managment</h1>
+        </header>
+        <main>
+            <section class="options">
+                <div class="option">
+                    <h2>Nuevo Proyecto</h2>
+                    <button onclick="window.location.href='../Proyectos/Proyectos.html'">Agregar Proyecto</button>
+                </div>
+                <div class="option">
+                    <h2>Usuarios</h2>
+                    <button onclick="window.location.href='../Configuraciones/User/User.html'">Ir a Configuraciones</button>
+                </div>
+            </section>
+            <section class="recent-activities">
+                <h2>Actividades Recientes</h2>
+                <ul>
+                    <li>Actividad 1</li>
+                    <li>Actividad 2</li>
+                    <li>Actividad 3</li>
+                </ul>
+            </section>
+        </main>
+        <footer>
+            <p>&copy; 2024 Gestor de Tareas y Proyectos</p>
+        </footer>
+    </div>
+    <script src="home.js"></script>
+</body>
+</html>

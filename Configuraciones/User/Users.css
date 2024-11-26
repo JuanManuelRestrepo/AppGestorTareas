@@ -1,0 +1,86 @@
+body {
+    font-family:"OpenSans";
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(to right, #242121, #858686); /* Degradado de izquierda a derecha */
+}
+
+.header {
+    display: flexbox;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.create-user-btn {
+    background-color: #4CAF50;
+    color: rgb(0, 0, 0);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.create-user-btn:hover {
+    background-color: #53ff5b;
+    color: #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse ;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #222222;
+    
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+td{
+    color: white;
+}
+
+th {
+    background-color: #4b4b4b;
+    color: #fffefe;
+    border-radius: 1%;
+}
+
+
+.user-card button {
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.user-card button:hover {
+    background-color: #0056b3;
+    color: #000000;
+
+}
+
+
+th .Editar{
+    cursor: pointer;
+}
+
+th .Eliminar{
+    cursor: pointer;
+}

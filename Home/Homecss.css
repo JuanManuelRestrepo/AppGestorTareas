@@ -1,0 +1,154 @@
+/* CSS */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+
+h1 {
+    text-align: center;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Oculto por defecto */
+    background-color: #1e1e1e;
+    color: white;
+    transition: transform 0.3s ease;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.sidebar.active {
+    left: 0; /* Muestra la barra lateral cuando tenga la clase active */
+}
+
+.sidebar .close-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.sidebar nav {
+    margin-top: 60px; /* Para que no se sobreponga al botón de cerrar */
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    border-bottom: 1px solid #333;
+}
+
+.sidebar nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #575757;
+}
+
+.main-content {
+    margin-left: 0; /* Sin margen por defecto */
+    transition: margin-left 0.3s ease;
+    padding: 20px;
+}
+
+.main-content.sidebar-active {
+    margin-left: 250px; /* Mueve el contenido hacia la derecha cuando el sidebar está activo */
+}
+
+header {
+    background-color: #1e1e1e;
+    color: white;
+    padding: 20px;
+    position: relative;
+}
+
+.open-btn {
+    font-size: 24px;
+    background: #1e1e1e;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+main {
+    padding: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.option {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 45%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.option button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.recent-activities {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #1e1e1e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}

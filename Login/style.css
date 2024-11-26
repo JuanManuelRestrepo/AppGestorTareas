@@ -1,0 +1,139 @@
+/* Reseteo de márgenes y rellenos para todos los elementos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo de la página */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+/* Contenedor principal que tendrá dos secciones */
+.container {
+  display: flex;
+  width: 80%;
+  height: 80vh;
+  max-width: 1200px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Estilo de la sección izquierda donde estará el formulario */
+.form-login {
+  width: 50%; /* Se ocupa la mitad del contenedor */
+  background-color: white;
+  padding: 40px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.form-login h5 {
+  margin: 0;
+  text-align: center;
+  height: 40px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #017bab;
+  font-size: 22px;
+  color: #333;
+}
+
+/* Estilo para los campos de entrada */
+.controls {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.controls:focus {
+  border-color: #017bab;
+  background-color: #e8f4f8;
+  outline: none;
+}
+
+/* Estilo del botón de envío */
+.buttons {
+  width: 100%;
+  height: 45px;
+  background: #000000;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.buttons:hover {
+  background-color: grey;
+}
+
+/* Estilo del mensaje de respuesta */
+.form-login p {
+  height: 40px;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Estilo para los enlaces dentro del formulario */
+.form-login a {
+  color: #017bab;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.form-login a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo de la sección derecha (imagen) */
+.image-section {
+  width: 50%; /* Se ocupa la otra mitad del contenedor */
+  background-image: url("LoginPro.png");
+  background-size: cover; /* Asegura que la imagen cubra todo el fondo */
+  background-position: center center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat; /* Evita que la imagen se repita si no cubre el área */
+  border-radius: 10px;
+  transition: background-size 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Apilar las secciones en dispositivos pequeños */
+    height: auto;
+  }
+
+  .form-login {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    padding: 30px;
+  }
+
+  .image-section {
+    width: 100%; /* Ocupa todo el ancho en pantallas pequeñas */
+    height: 300px; /* Ajusta la altura en pantallas pequeñas */
+    background-attachment: scroll; /* No fija la imagen en pantallas pequeñas */
+    background-size: cover; /* Asegura que la imagen cubra el contenedor */
+    background-position: center center; /* Centra la imagen */
+  }
+}

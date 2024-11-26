@@ -1,0 +1,258 @@
+/* --- Estilos Generales --- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  padding: 20px;
+  margin: 0;
+}
+/* Estilo para los enlaces de proyectos */
+.proyecto-enlace {
+  color: #000000; /* Color original del enlace */
+  text-decoration: none; /* Quitar subrayado */
+}
+
+/* Estilo para los enlaces visitados */
+.proyecto-enlace:visited {
+  color: #000000; /* Mantener el mismo color (puedes cambiarlo si prefieres otro) */
+  text-decoration: none; /* Quitar la línea debajo */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Botones */
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Formularios */
+.formulario {
+  display: none;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form input,
+form textarea,
+form select {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+form button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+form button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+form button:hover {
+  opacity: 0.9;
+}
+
+/* Estilo para la lista de proyectos */
+.proyectos-list {
+  margin-top: 20px;
+}
+
+.proyectos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.proyecto-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.proyecto-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.proyecto-description {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+/* Estilos para el campo de usuarios */
+label[for="Usuarios"],
+label[for="usuariosActualizar"] {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+#Usuarios,
+#usuariosActualizar {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #fff;
+  box-sizing: border-box;
+  min-height: 120px; /* Altura mínima para mostrar varias opciones */
+  resize: vertical; /* Permite redimensionar el campo verticalmente */
+}
+
+/* Estilo de las opciones dentro del select */
+#Usuarios option,
+#usuariosActualizar option {
+  padding: 5px;
+  font-size: 16px;
+}
+
+#Usuarios:focus,
+#usuariosActualizar:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para los botones de crear y cancelar */
+.crear-proyecto-btn {
+  background-color: #4CAF50;
+  font-size: 18px;
+}
+
+.crear-proyecto-btn:hover {
+  background-color: #45a049;
+}
+
+button[type="button"] {
+  background-color: #f44336;
+}
+
+button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+/* Estilo para los botones de Proyecto (Editar y Eliminar) */
+.proyecto-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+/* Estilos para los botones dentro de los formularios */
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.form-buttons button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-buttons button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.form-buttons button[type="button"] {
+  background-color: #f44336;
+  color: white;
+}
+
+.form-buttons button:hover {
+  opacity: 0.9;
+}
+
+.form-buttons button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.form-buttons button[type="button"]:hover {
+  background-color: #d32f2f;
+}
+
+.proyecto-buttons button {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.proyecto-buttons .editar {
+  background-color: #007bff;
+  color: white;
+}
+
+.proyecto-buttons .editar:hover {
+  background-color: #0056b3;
+}
+
+.proyecto-buttons .eliminar {
+  background-color: #f44336;
+  color: white;
+}
+
+.proyecto-buttons .eliminar:hover {
+  background-color: #d32f2f;
+}

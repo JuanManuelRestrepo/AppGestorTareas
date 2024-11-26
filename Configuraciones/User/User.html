@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Users.css" rel="stylesheet">
+    <title>Users</title>
+</head>
+<body>
+    <div class="header">
+        <h1>Lista de Usuarios</h1>
+    </div>
+
+    <div>
+        <button class="create-user-btn" onclick="crearUsuario()">Crear Usuario</button>
+    </div>
+    
+    <div id="message-container"></div> <!-- Contenedor para mensajes -->
+
+    <table id="users-table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody id="users-table-body">
+            <!-- Aquí se insertarán los usuarios -->
+        </tbody>
+    </table>
+
+    <script src="users.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+
+/* Estilos para el contenedor de tareas */
+#tareasList {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0;
+    margin: 20px;
+}
+
+#tareasList li {
+    background-color: #f4f4f9; /* Color de fondo suave */
+    border-radius: 8px; /* Bordes redondeados */
+    margin-bottom: 15px; /* Espacio entre las tareas */
+    padding: 20px; /* Espacio interno */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease-in-out; /* Efecto de transición para hover */
+}
+
+/* Efecto al pasar el ratón sobre cada tarea */
+#tareasList li:hover {
+    transform: translateY(-5px); /* Mueve la tarea hacia arriba */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Aumenta la sombra */
+}
+
+/* Estilos para el nombre de la tarea */
+#tareasList li strong {
+    font-size: 1.2em; /* Aumenta el tamaño del texto */
+    color: #4CAF50; /* Color verde para el nombre */
+    display: block; /* Hace que el nombre ocupe toda la línea */
+    margin-bottom: 10px; /* Espacio debajo del nombre */
+}
+
+/* Estilos para la descripción de la tarea */
+#tareasList li p {
+    font-size: 1em;
+    color: #555555; /* Color gris para el texto */
+    margin: 5px 0;
+}
+
+/* Estilo para las fechas */
+#tareasList li .fechas {
+    font-size: 0.9em;
+    color: #888888; /* Color gris claro para las fechas */
+}
+
+/* Estilo para el estado de la tarea */
+#tareasList li .estado {
+    font-size: 1em;
+    font-weight: bold;
+    color: #FF5722; /* Color anaranjado para el estado */
+    margin-top: 10px;
+}
+
+
+
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+h2 {
+    color: #555;
+}
+
+#usuariosList, #tareasList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#usuariosList li, #tareasList li {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#formularioTarea {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Estilo para el formulario de actualización */
+#formularioActualizarTarea {
+    margin-top: 30px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#formularioActualizarTarea h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#formularioActualizarTarea label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#formularioActualizarTarea input,
+#formularioActualizarTarea textarea,
+#formularioActualizarTarea select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#formularioActualizarTarea button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#formularioActualizarTarea button:hover {
+    background-color: #0056b3;
+}
+
+#formularioActualizarTarea button[type="button"] {
+    background-color: #6c757d;
+}
+
+#formularioActualizarTarea button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input, form select {
+    margin-bottom: 10px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #007bff;
+}
+
+#cancelarCrearTarea
+{
+    background-color: red;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
